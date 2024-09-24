@@ -1,3 +1,5 @@
+/* In your Header.module.css or appropriate CSS file */
+
 .header__outerContainer {
   position: sticky;
   top: 0;
@@ -39,48 +41,80 @@
   border: 1px solid transparent;
 }
 
-.search {
+.header__search {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
+  max-height: 200px;
   width: 100%;
   flex: 1;
 }
-
-.search select,
-.search input {
-  padding: 10px;
-  font-weight: bold;
-  outline: 1px solid white;
+.header__search:focus-within {
+  border: 2px solid rgb(254, 189, 105);
+  border-radius: 13px;
 }
 
-.search select {
+.header__search_category {
+  display: inline-block;
+  border-radius: 10px 0 0 10px;
+  padding: 9px;
+  font-weight: 400;
+  font-size: medium;
   border: none;
-  background: #ccc;
+  background-color: #ccc;
 }
-
-.search input {
+/* .header__search_category option {
+  float: left;
+  vertical-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: red;
+} */
+.header__search_InputContainer {
+  position: relative;
+  width: 100%;
+}
+.header__search_InputContainer input {
+  padding: 9px;
+  font-weight: 400;
   border: 1px solid white;
   width: 100%;
-  margin-right: -2px;
-  border: none;
+  outline: none;
+  font-size: 16px;
+  /* margin-right: -2px; */
+  /* border: none; */
 }
-
-.search svg {
+.header__search_icon {
   padding: 7px;
-  /* size: 37px; */
   background: #febd69;
   color: #1a1a1a;
+  border-radius: 0 10px 10px 0;
 }
 
-.search svg:hover {
+.header__search_icon:hover {
   background-color: #d49644;
 }
 
-.search:focus-within {
-  border: 2px solid rgb(235, 161, 173);
+.header__search_suggestionsList {
+  position: absolute;
+  top: 100%; /* Positions the list directly below the input */
+  left: 0;
+  right: 0;
+  color: #000;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000; /* Ensure it appears above other elements */
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.header__search_suggestionsList li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.header__search_suggestionsList li:hover {
+  background-color: #f0f0f0;
 }
 
 .order__container {
