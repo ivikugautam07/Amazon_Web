@@ -84,3 +84,9 @@
   padding-top: 5px;
   color: red;
 }
+.auth__msg_login {
+  padding: 5px;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}

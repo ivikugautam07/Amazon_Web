@@ -45,7 +45,7 @@ function Header() {
             </select>
             <input type="text" name="" id="" placeholder="Search Amazon" />
             {/* icon */}
-            <BsSearch size={38} />
+            <BsSearch size={40} />
           </div>
 
           <div className={classes.order__container}>
@@ -78,7 +78,7 @@ function Header() {
             </Link>
 
             {/* orders */}
-            <Link to="/order">
+            <Link to="/orders">
               <p>returns</p>
               <span>& Orders</span>
             </Link>
