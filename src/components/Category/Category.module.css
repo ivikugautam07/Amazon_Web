@@ -1,8 +1,9 @@
 .category {
-  height: 350px;
-  width: 350px;
+  height: 330px;
+  width: 300px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
 }
 
 .category img {
@@ -23,15 +24,23 @@
 }
 
 .category p {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
-  color: rgb(9, 132, 209);
+  color: #007185;
+  cursor: pointer;
+}
+
+.category p:hover {
+  color: #c7511f;
 }
 
 .category__container {
-  position: relative;
-  margin-top: -10%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1600px;
+  gap: 40px;
+  position: relative;
+  margin-top: -20%;
   place-items: center;
+  margin-inline: auto;
 }

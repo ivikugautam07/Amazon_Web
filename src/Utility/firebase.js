@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app"; // Import the compat version of Firebase
 
+import { getAuth } from "firebase/auth";
 import "firebase/compat/firestore"; // Import Firestore compat
 import "firebase/compat/auth"; // Import Auth compat
 
@@ -15,5 +16,5 @@ const firebaseConfig = {
 
 // Initialize Firebase using the compat version
 const app = firebase.initializeApp(firebaseConfig);
-export const auth = firebase.auth(); // Use Firebase compat Auth
+export const auth = getAuth(app); // Use Firebase compat Auth
 export const db = firebase.firestore(); // Use Firebase compat Firestore

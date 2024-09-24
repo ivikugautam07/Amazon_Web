@@ -32,9 +32,11 @@
   gap: 3px;
   font-weight: bold;
   padding: 5px;
+  border: 1px solid transparent;
 }
 .delivery p {
   font-size: 10px;
+  border: 1px solid transparent;
 }
 
 .search {
@@ -127,6 +129,12 @@
   left: 16px;
   color: orange;
 }
+.order__container a,
+.delivery,
+.logo__container,
+.lower__container ul li {
+  border: 1px solid transparent;
+}
 
 .order__container a:hover,
 .delivery:hover,
@@ -148,6 +156,7 @@
 
 .lower__container ul li {
   padding: 8px;
+  border: 1px solid transparent;
 }
 
 .lower__container ul li:first-child {
@@ -156,11 +165,12 @@
   align-items: center;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .header__container {
     display: flex;
     flex-direction: column !important;
     height: auto;
+    padding: 14px;
   }
   .lower__container ul li:not(:first-child) {
     display: none;
