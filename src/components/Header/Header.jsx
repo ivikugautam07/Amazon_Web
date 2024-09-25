@@ -90,7 +90,7 @@ function Header() {
             {/* delivery */}
             <div className={classes.delivery}>
               <span>
-                <SlLocationPin />
+                <SlLocationPin size={19} />
               </span>
               <div>
                 <p>Deliver to</p>

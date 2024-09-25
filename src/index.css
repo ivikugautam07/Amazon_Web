@@ -3,7 +3,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "PT Sans", sans-serif;
+  font-family: "CustomFont", sans-serif;
+}
+
+@font-face {
+  font-family: "CustomFont";
+  src: url("./assets/fonts/AmazonEmber_W_Rg.woff") format("woff"),
+    url("./assets/fonts/AmazonEmber_W_Bd.woff") format("woff"),
+    url("./assets/fonts/AmazonEmber_W_Th.woff") format("woff");
+  /* Add additional font formats if necessary */
+  /* Specify the correct path to the font files */
 }
 
 :root {
@@ -12,5 +21,5 @@
 }
 
 .body {
-  font-family: "PT Sans", sans-serif;
+  font-family: "CustomFont", sans-serif;
 }

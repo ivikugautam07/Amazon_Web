@@ -29,16 +29,22 @@
 }
 .delivery {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
   gap: 3px;
   font-weight: bold;
   padding: 5px;
   border: 1px solid transparent;
+  line-height: 1;
 }
 .delivery p {
-  font-size: 10px;
+  font-size: 13px;
+  font-weight: 500;
   border: 1px solid transparent;
+}
+
+.delivery span {
+  font-weight: 600;
 }
 
 .header__search {
@@ -131,7 +137,11 @@
   color: white;
 }
 .order__container p {
-  font-size: 10px;
+  font-weight: 100;
+  font-size: 12px;
+}
+.order__container span {
+  font-weight: 600;
 }
 
 .language {
