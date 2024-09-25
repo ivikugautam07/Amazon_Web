@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { productUrl } from "../../Api/EndPoints";
+import { productUrl } from "../../Api/endPoints";
 import LayOut from "../../components/LayOut/LayOut";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/Product/ProductCard";
