@@ -1,7 +1,10 @@
 import { Type } from "./action.type";
 
+// Load basket from local storage
+const savedBasket = JSON.parse(localStorage.getItem('basket')) || [];
+
 export const initialState = {
-  basket: [],
+  basket: savedBasket,
   user: null
 };
 
@@ -24,7 +27,8 @@ export const reducer = (state, action) => {
             ? { ...item, amount: item.amount + 1 }
             : item;
         });
-
+        // Save to local storage
+         localStorage.setItem('basket', JSON.stringify(updatedBasket));
         return {
           ...state,
           basket: updatedBasket,
@@ -46,6 +50,8 @@ export const reducer = (state, action) => {
         }
       }
 
+      // Save to local storage
+      localStorage.setItem('basket', JSON.stringify(newBasket));
       return {
         ...state,
         basket: newBasket,
@@ -57,6 +63,8 @@ export const reducer = (state, action) => {
         user: action.user
       }
     case Type.EMPTY_BASKET:
+      // Save to local storage
+  localStorage.setItem('basket', JSON.stringify([]));
       return {
         ...state,
         basket: []

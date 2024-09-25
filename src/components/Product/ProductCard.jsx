@@ -21,7 +21,7 @@ function ProductCard({
 
   const [state, dispatch] = useContext(DataContext);
 
-  console.log(description);
+  // console.log(description);
 
   // console.log(renderAdd);
   const addToCart = () => {
