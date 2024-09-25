@@ -100,7 +100,7 @@ function Payment() {
           <h3>Review items and Delivery</h3>
           <div>
             {basket?.map((item, i) => (
-              <ProductCard key={i} product={item} flex={true} />
+              <ProductCard key={i} product={item} flex={true} titleUp={true} />
             ))}
           </div>
         </div>

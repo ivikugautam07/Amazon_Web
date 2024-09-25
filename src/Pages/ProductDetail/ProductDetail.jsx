@@ -33,6 +33,7 @@ function ProductDetail() {
       ) : (
         <ProductCard
           key={product.id}
+          titleUp={true}
           product={product}
           flex={true}
           add_description={true}

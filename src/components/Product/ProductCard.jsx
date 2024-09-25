@@ -12,13 +12,16 @@ function ProductCard({
   flex,
   add_description,
   renderAdd,
-  renderDesc,
+  sliceDesc,
+  titleUp,
 }) {
   // const { image, title, id, rating = {}, price } = product;
   // const { rate = 0, count = 0 } = rating;
   const { image, title, id, rating, price, description } = product;
 
   const [state, dispatch] = useContext(DataContext);
+
+  console.log(description);
 
   // console.log(renderAdd);
   const addToCart = () => {
@@ -49,9 +52,17 @@ function ProductCard({
         />
       </Link>
       <div>
-        <h3>{title}</h3>
+        {titleUp && <h3>{title}</h3>}
+        {sliceDesc && <h3>{`${title.slice(0, 30)} ...`}</h3>}
+
         {add_description && (
           <div style={{ maxWidth: "750" }}>{description}</div>
+        )}
+        {sliceDesc && (
+          <div style={{ maxWidth: "350" }}>{`${description.slice(
+            0,
+            90
+          )}...`}</div>
         )}
         <div className={classes.productCard__rating}>
           <Rating value={rating?.rate} precision={0.1} />
@@ -62,7 +73,7 @@ function ProductCard({
         </div>
         {renderAdd && (
           <button className={classes.productCard__button} onClick={addToCart}>
-            add to cart
+            Add to cart
           </button>
         )}
       </div>

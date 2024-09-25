@@ -49,6 +49,7 @@ function Cart() {
                     product={item}
                     add_description={true}
                     flex={true}
+                    titleUp={true}
                   />
                   <div className={classes.cart__btn__container}>
                     <button

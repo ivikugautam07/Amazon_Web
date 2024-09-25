@@ -48,7 +48,12 @@ function Orders() {
                   <p>Order ID:{eachOrder?.id}</p>
                   {eachOrder?.data?.basket?.map((order) => {
                     return (
-                      <ProductCard key={order.id} product={order} flex={true} />
+                      <ProductCard
+                        key={order.id}
+                        product={order}
+                        flex={true}
+                        titleUp={true}
+                      />
                     );
                   })}
                 </div>

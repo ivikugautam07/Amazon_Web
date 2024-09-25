@@ -68,6 +68,7 @@ function Results() {
                   product={data}
                   renderAdd={true}
                   add_button={true}
+                  titleUp={true}
                 />
               ))
             ) : (

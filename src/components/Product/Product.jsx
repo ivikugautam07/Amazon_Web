@@ -36,6 +36,7 @@ function Product() {
                 renderAdd={true}
                 key={singleProduct.id}
                 product={singleProduct}
+                sliceDesc={true}
               />
             );
           })}
