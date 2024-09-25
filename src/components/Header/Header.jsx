@@ -1,79 +1,81 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/icons/amazon-logo-white.png";
-import { BsSearch } from "react-icons/bs";
-import { SlLocationPin } from "react-icons/sl";
-import { BiCart } from "react-icons/bi";
-import classes from "./Header.module.css";
-import LowerHeader from "./LowerHeader";
-import { DataContext } from "../DataProvider/DataProvider";
-import { auth } from "../../Utility/firebase";
-import axios from "axios";
-import { productUrl } from "../../Api/endPoints";
+import logo from "../../assets/icons/amazon-logo-white.png"; // Amazon logo image
+import { BsSearch } from "react-icons/bs"; // Search icon from react-icons
+import { SlLocationPin } from "react-icons/sl"; // Location pin icon
+import { BiCart } from "react-icons/bi"; // Cart icon
+import classes from "./Header.module.css"; // Importing styles specific to the Header component
+import LowerHeader from "./LowerHeader"; // Importing another component for the lower part of the header
+import { DataContext } from "../DataProvider/DataProvider"; // Importing the data context to access the basket and user
+import { auth } from "../../Utility/firebase"; // Firebase authentication for signing in/out
+import axios from "axios"; // Axios for making HTTP requests
+import { productUrl } from "../../Api/endPoints"; // API endpoint for products
 
 function Header() {
+  // Accessing the basket (cart items) and user from the context
   const [{ basket, user }] = useContext(DataContext);
+
+  // Calculate total items in the basket (cart) using reduce
   const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
-  // console.log(basket.length);
 
-  const [categories, setCategories] = useState([]); // State for categories
-  const [selectedCategory, setSelectedCategory] = useState(""); // State for selected category
-  const [searchTerm, setSearchTerm] = useState(""); // State for search input
-  const [suggestions, setSuggestions] = useState([]); // State for search suggestions
+  // States for categories, selected category, search term, and suggestions
+  const [categories, setCategories] = useState([]); // Stores categories for dropdown
+  const [selectedCategory, setSelectedCategory] = useState(""); // Stores the selected category from the dropdown
+  const [searchTerm, setSearchTerm] = useState(""); // Stores the user's search input
+  const [suggestions, setSuggestions] = useState([]); // Stores search suggestions based on the search term
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to navigate programmatically
 
-  // Fetch categories from FakeStore API
+  // Fetch categories from FakeStore API when the component mounts
   useEffect(() => {
     axios
-      .get(`${productUrl}/products/categories`)
+      .get(`${productUrl}/products/categories`) // GET request to fetch categories
       .then((response) => {
-        setCategories(response.data);
-        // console.log(response.data);
+        setCategories(response.data); // Setting the categories in the state
       })
       .catch((error) => {
-        console.error("Error fetching categories:", error);
+        console.error("Error fetching categories:", error); // Log any errors
       });
   }, []);
 
-  // Handle search input change
+  // Handle changes in the search input field
   const handleSearchInputChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
+    const value = e.target.value; // Get the current value of the input
+    setSearchTerm(value); // Set the search term state
 
+    // If search input is not empty, fetch matching products
     if (value.length > 0) {
-      // Fetch products matching the search term
       axios
-        .get(`${productUrl}/products`)
+        .get(`${productUrl}/products`) // GET request to fetch all products
         .then((response) => {
+          // Filter products to match the search term
           const filteredProducts = response.data.filter((product) =>
             product.title.toLowerCase().includes(value.toLowerCase())
           );
-          setSuggestions(filteredProducts);
+          setSuggestions(filteredProducts); // Set the filtered products as suggestions
         })
         .catch((error) => {
-          console.error("Error fetching products:", error);
+          console.error("Error fetching products:", error); // Log any errors
         });
     } else {
-      setSuggestions([]);
+      setSuggestions([]); // Clear suggestions if input is empty
     }
   };
 
-  // Handle selection of a suggestion
+  // Handle when a suggestion is clicked
   const handleSuggestionClick = (productId) => {
-    navigate(`/products/${productId}`); // Redirect to product details page
-    setSearchTerm("");
-    setSuggestions([]);
+    navigate(`/products/${productId}`); // Navigate to the product details page
+    setSearchTerm(""); // Clear the search term
+    setSuggestions([]); // Clear suggestions
   };
 
-  // Handle search action
+  // Handle the search action when the search icon is clicked
   const handleSearch = () => {
-    // If no category is selected, default to 'all'
-    const category = selectedCategory || "all";
+    const category = selectedCategory || "all"; // Use selected category or 'all' if none selected
     navigate(
       `/results?category=${encodeURIComponent(
         category
-      )}&search=${encodeURIComponent(searchTerm)}`
+      )}&search=${encodeURIComponent(searchTerm)}` // Navigate to the search results page with category and search term as query parameters
     );
   };
 
@@ -81,44 +83,38 @@ function Header() {
     <section className={classes.header__outerContainer}>
       <header>
         <section className={classes.header__container}>
+          {/* Logo */}
           <div className={classes.logo__container}>
-            {/* logo */}
             <Link to="/">
-              <img src={logo} alt="amazon logo" />
+              <img src={logo} alt="amazon logo" />{" "}
+              {/* Amazon logo with link to homepage */}
             </Link>
 
-            {/* delivery */}
+            {/* Delivery location */}
             <div className={classes.delivery}>
               <span>
-                <SlLocationPin size={19} />
+                <SlLocationPin size={19} /> {/* Location pin icon */}
               </span>
               <div>
                 <p>Deliver to</p>
-                <span>Ethiopia</span>
+                <span>Ethiopia</span> {/* Static delivery location */}
               </div>
             </div>
           </div>
 
-          {/* search */}
+          {/* Search Bar */}
           <div className={classes.header__search}>
             {/* Category Dropdown */}
             <select
               className={classes.header__search_category}
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              name=""
-              id=""
+              value={selectedCategory} // Current selected category
+              onChange={(e) => setSelectedCategory(e.target.value)} // Handle category change
             >
-              <option className={classes.header__search_category_list} value="">
-                All
-              </option>
+              <option value="">All</option> {/* Default 'All' option */}
               {categories.map((category, index) => (
-                <option
-                  className={classes.header__search_category_list}
-                  key={index}
-                  value={category}
-                >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                <option key={index} value={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+                  {/* Capitalize category names */}
                 </option>
               ))}
             </select>
@@ -128,10 +124,10 @@ function Header() {
               <input
                 type="text"
                 placeholder="Search Amazon"
-                value={searchTerm}
-                onChange={handleSearchInputChange}
+                value={searchTerm} // Current search term
+                onChange={handleSearchInputChange} // Handle search input change
               />
-              {/* Suggestions Dropdown */}
+              {/* Search Suggestions */}
               {suggestions.length > 0 && (
                 <ul className={classes.header__search_suggestionsList}>
                   {suggestions.map((product) => (
@@ -139,7 +135,8 @@ function Header() {
                       key={product.id}
                       onClick={() => handleSuggestionClick(product.id)}
                     >
-                      {product.title}
+                      {product.title}{" "}
+                      {/* Display product title in suggestions */}
                     </li>
                   ))}
                 </ul>
@@ -149,54 +146,57 @@ function Header() {
             <BsSearch
               className={classes.header__search_icon}
               size={40}
-              onClick={handleSearch}
+              onClick={handleSearch} // Trigger search on icon click
             />
           </div>
 
-          {/* Right-side Links */}
+          {/* Right-side Links (Account, Orders, Cart) */}
           <div className={classes.order__container}>
+            {/* Language Selector */}
             <a href="" className={classes.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg"
                 alt="USA Flag"
               />
-              <select name="" id="">
-                <option value="">EN</option>
+              <select>
+                <option>EN</option> {/* Static language option */}
               </select>
             </a>
 
             {/* Sign In / Sign Out */}
             <Link to={!user && "/auth"}>
               <div>
-                {user ? (
+                {user ? ( // If the user is signed in
                   <>
-                    <p>Hello, {user?.email?.split("@")[0]}</p>
-                    <span onClick={() => auth.signOut()}>Sign out</span>
+                    <p>Hello, {user?.email?.split("@")[0]}</p>{" "}
+                    {/* Greet the user */}
+                    <span onClick={() => auth.signOut()}>Sign out</span>{" "}
+                    {/* Sign out option */}
                   </>
                 ) : (
                   <>
-                    <p>Hello, Sign In</p>
+                    <p>Hello, Sign In</p> {/* If no user, show Sign In */}
                     <span>Account & Lists</span>
                   </>
                 )}
               </div>
             </Link>
 
-            {/* orders */}
+            {/* Orders */}
             <Link to="/orders">
               <p>returns</p>
-              <span>& Orders</span>
+              <span>& Orders</span> {/* Link to user's orders */}
             </Link>
 
-            {/* cart */}
+            {/* Cart */}
             <Link to="/cart" className={classes.cart}>
-              <BiCart size={35} />
-              <span>{totalItem}</span>
+              <BiCart size={35} /> {/* Cart icon */}
+              <span>{totalItem}</span> {/* Display total items in cart */}
             </Link>
           </div>
         </section>
       </header>
-      <LowerHeader />
+      <LowerHeader /> {/* Rendering the LowerHeader component */}
     </section>
   );
 }
