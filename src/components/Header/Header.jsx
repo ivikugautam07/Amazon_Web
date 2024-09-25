@@ -29,7 +29,7 @@ function Header() {
       .get(`${productUrl}/products/categories`)
       .then((response) => {
         setCategories(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching categories:", error);
@@ -61,17 +61,19 @@ function Header() {
 
   // Handle selection of a suggestion
   const handleSuggestionClick = (productId) => {
-    navigate(`/product/${productId}`); // Redirect to product details page
+    navigate(`/products/${productId}`); // Redirect to product details page
     setSearchTerm("");
     setSuggestions([]);
   };
 
   // Handle search action
   const handleSearch = () => {
+    // If no category is selected, default to 'all'
+    const category = selectedCategory || "all";
     navigate(
-      `/results?category=${selectedCategory}&search=${encodeURIComponent(
-        searchTerm
-      )}`
+      `/results?category=${encodeURIComponent(
+        category
+      )}&search=${encodeURIComponent(searchTerm)}`
     );
   };
 
