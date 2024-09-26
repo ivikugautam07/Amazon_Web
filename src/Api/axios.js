@@ -11,4 +11,4 @@ const axiosInstance = axios.create({
   // baseURL:  'https://amazon-clone-server-zm56.onrender.com/'
 });
 
-export { axiosInstance };
+export { axiosInstance }; 
