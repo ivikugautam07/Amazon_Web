@@ -66,7 +66,7 @@
   display: flex;
   box-shadow: none;
   height: auto;
-  gap: 100px;
+  gap: 10px;
   width: 98%;
   /* overflow: hidden; */
 }
@@ -82,12 +82,8 @@
   margin-right: 40px;
 }
 
-.product_detail {
-  height: 50vh;
-}
-
 .product_detail img {
-  width: 300px !important;
+  width: 300px;
   height: auto;
 }
 
@@ -99,10 +95,12 @@
   .product_detail {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     gap: 0;
   }
 
   .product_detail img {
     width: 50% !important;
+    /* align-items: center; */
   }
 }
