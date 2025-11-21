@@ -15,7 +15,8 @@
 
 ## About The Project
 
-![Product Screenshot](product_ss.png)
+![Product Screenshot](https://raw.githubusercontent.com/ivikugautam07/Amazon_Web/main/product_ss.png
+)
 
 **Project Title**: Amazon Clone
 
