@@ -15,7 +15,7 @@
 
 ## About The Project
 
-![Product Screenshot]Screenshot 2025-11-22 030531.png
+![Product Screenshot](product_ss.png)
 
 **Project Title**: Amazon Clone
 
