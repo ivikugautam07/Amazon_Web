@@ -17,7 +17,7 @@
 
 <!-- ![Product Screenshot](https://raw.githubusercontent.com/ivikugautam07/Amazon_Web/main/product_ss.png
 ) -->
-![Product Screenshot](https://raw.githubusercontent.com/ivikugautam07/Amazon_Web/main/src/product_detail%20img/product_ss.png)
+![Product Screenshot](https://raw.githubusercontent.com/ivikugautam07/Amazon_Web/refs/heads/main/src/assets/screencapture-clone-evangadi-2024-web-app.png)
 
 
 **Project Title**: Amazon Clone
