@@ -15,7 +15,7 @@
 
 ## About The Project
 
-![Product Screenshot](https://drive.google.com/file/d/1K0VHorM145-40LLV-4RzoIgnTo4R-9Yj/view?usp=sharing)
+![Product Screenshot]Screenshot 2025-11-22 030531.png
 
 **Project Title**: Amazon Clone
 
@@ -224,7 +224,7 @@ Make sure these prerequisites are fulfilled before proceeding with the installat
 
 For any questions or inquiries about the Amazon clone project, feel free to reach out via the following:
 
-- **Email**: [birukjira@gmail.com](mailto:i.vikashgautam@gmail.com)
+- **Email**: [i.vikashgautam@gmail.com](mailto:i.vikashgautam@gmail.com)
 - **GitHub**: [GitHub Profile](https://github.com/ivikugautam07)
 - **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/vikashkgautam/)
 
