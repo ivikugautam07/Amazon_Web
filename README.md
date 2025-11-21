@@ -15,7 +15,7 @@
 
 ## About The Project
 
-![Product Screenshot](https://raw.githubusercontent.com/birukjira/amazon-clone/refs/heads/main/src/assets/screencapture-clone-evangadi-2024-web-app.png)
+![Product Screenshot](https://drive.google.com/file/d/1K0VHorM145-40LLV-4RzoIgnTo4R-9Yj/view?usp=sharing)
 
 **Project Title**: Amazon Clone
 
